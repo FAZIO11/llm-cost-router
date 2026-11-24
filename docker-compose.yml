@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  router:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: llm-cost-router
+    ports:
+      - "8000:8000"
+    environment:
+      - ROUTER_MODE=${ROUTER_MODE:-mock}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL:-http://ollama:11434}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./models:/app/models
+    restart: unless-stopped
+    networks:
+      - llm-router-network
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: llm-cost-router-dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - router
+    restart: unless-stopped
+    networks:
+      - llm-router-network
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: llm-cost-router-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - llm-router-network
+    profiles:
+      - ollama
+
+volumes:
+  ollama-data:
+
+networks:
+  llm-router-network:
+    driver: bridge
