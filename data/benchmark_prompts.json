@@ -1,0 +1,182 @@
+[
+  {
+    "id": "simple-01",
+    "category": "simple",
+    "expected_tier": "simple",
+    "prompt": "What is a palindrome?"
+  },
+  {
+    "id": "simple-02",
+    "category": "simple",
+    "expected_tier": "simple",
+    "prompt": "Define 'isotope' in one or two sentences."
+  },
+  {
+    "id": "simple-03",
+    "category": "simple",
+    "expected_tier": "simple",
+    "prompt": "Name the chemical symbol for tungsten."
+  },
+  {
+    "id": "simple-04",
+    "category": "simple",
+    "expected_tier": "simple",
+    "prompt": "Rewrite 'ada lovelace' in title case."
+  },
+  {
+    "id": "simple-05",
+    "category": "simple",
+    "expected_tier": "simple",
+    "prompt": "What is the boiling point of water?"
+  },
+  {
+    "id": "simple-06",
+    "category": "simple",
+    "expected_tier": "simple",
+    "prompt": "What is an ISBN?"
+  },
+  {
+    "id": "simple-07",
+    "category": "simple",
+    "expected_tier": "simple",
+    "prompt": "What gas do humans exhale?"
+  },
+  {
+    "id": "simple-08",
+    "category": "simple",
+    "expected_tier": "simple",
+    "prompt": "Name the longest river in Africa."
+  },
+  {
+    "id": "simple-09",
+    "category": "simple",
+    "expected_tier": "simple",
+    "prompt": "What instrument has 88 keys?"
+  },
+  {
+    "id": "simple-10",
+    "category": "simple",
+    "expected_tier": "simple",
+    "prompt": "What is a synonym for 'happy'?"
+  },
+  {
+    "id": "moderate-01",
+    "category": "moderate",
+    "expected_tier": "moderate",
+    "prompt": "This Python factorial helper returns the wrong result for n=0:\n\ndef fact(n):\n    if n == 1:\n        return 1\n    return n * fact(n-1)\n\nIdentify the bug and provide a corrected function."
+  },
+  {
+    "id": "moderate-02",
+    "category": "moderate",
+    "expected_tier": "moderate",
+    "prompt": "Given tables products(id, name, price) and order_items(id, product_id, qty), write a SQL query that lists products that have never been ordered."
+  },
+  {
+    "id": "moderate-03",
+    "category": "moderate",
+    "expected_tier": "moderate",
+    "prompt": "Compare insertion sort and shell sort for arrays of a few hundred nearly-sorted integers. When would you pick each, and why?"
+  },
+  {
+    "id": "moderate-04",
+    "category": "moderate",
+    "expected_tier": "moderate",
+    "prompt": "Write a TypeScript function that groups an array of objects by a given key and preserves typings as much as possible. Include a short usage example."
+  },
+  {
+    "id": "moderate-05",
+    "category": "moderate",
+    "expected_tier": "moderate",
+    "prompt": "A React component's useEffect fetches a list and then calls setState, but the component re-renders in an infinite loop. Diagnose the likely causes and show a corrected example."
+  },
+  {
+    "id": "moderate-06",
+    "category": "moderate",
+    "expected_tier": "moderate",
+    "prompt": "Write a short Bash script that prints the 10 largest files under the current directory, skipping any path that contains node_modules."
+  },
+  {
+    "id": "moderate-07",
+    "category": "moderate",
+    "expected_tier": "moderate",
+    "prompt": "Compare SQLite WAL mode and DELETE journal mode for a single-writer desktop app. Recommend one and justify the choice briefly."
+  },
+  {
+    "id": "moderate-08",
+    "category": "moderate",
+    "expected_tier": "moderate",
+    "prompt": "Write a SQL query using window functions to compute a 7-day rolling average of daily revenue from sales(sale_date DATE, amount NUMERIC)."
+  },
+  {
+    "id": "moderate-09",
+    "category": "moderate",
+    "expected_tier": "moderate",
+    "prompt": "This Java class breaks HashMap lookups because equals and hashCode are inconsistent. Show a typical broken pair, explain the bug, and provide a correct implementation for a UserId value object wrapping a string."
+  },
+  {
+    "id": "moderate-10",
+    "category": "moderate",
+    "expected_tier": "moderate",
+    "prompt": "Write a Python function that parses a CSV string into a list of dictionaries without importing csv, correctly handling commas inside double quotes."
+  },
+  {
+    "id": "complex-01",
+    "category": "complex",
+    "expected_tier": "complex",
+    "prompt": "Design a globally distributed consensus-backed configuration service (an etcd-like store) that offers leader election, linearizable reads, watch APIs, membership changes, and snapshot/restore. Discuss Raft log compaction, multi-region quorum placement, client fencing, and how the system behaves during network partitions and clock skew. Outline the control plane, data plane, and operational runbooks."
+  },
+  {
+    "id": "complex-02",
+    "category": "complex",
+    "expected_tier": "complex",
+    "prompt": "Architect a privacy-preserving federated learning system for on-device next-word prediction. Cover secure aggregation, differential-privacy budget accounting, client selection and dropout, model checkpointing, poison-update detection, and automatic rollback when evaluation quality regresses. Describe the coordinator, the on-device training loop, and the metrics that would gate a production rollout."
+  },
+  {
+    "id": "complex-03",
+    "category": "complex",
+    "expected_tier": "complex",
+    "prompt": "Design a multi-region payment ledger that supports exactly-once settlement, idempotent APIs, currency conversion, end-of-day reconciliation, and a regulatory audit trail. Address dual-write hazards, clock skew, foreign-exchange rate sources, disaster-recovery RPO/RTO, and how you would prove a payment was neither dropped nor double-applied after a regional failover."
+  },
+  {
+    "id": "complex-04",
+    "category": "complex",
+    "expected_tier": "complex",
+    "prompt": "Propose an algorithm and production architecture for real-time geospatial ride matching at a scale of millions of drivers and riders. Cover spatial indexing, fair dispatch, surge-pricing hooks, stale or jittery GPS handling, multi-hop cancellations, and SLOs for match latency. Include a sketch of the matching service, location ingestion path, and failure modes."
+  },
+  {
+    "id": "complex-05",
+    "category": "complex",
+    "expected_tier": "complex",
+    "prompt": "Design a zero-downtime schema migration framework for a sharded relational fleet. Explain expand/contract patterns, online backfills, dual-write and dual-read windows, automated cutover and rollback, lock-budget enforcement, and how migrations are coordinated across shards without causing cross-shard inconsistency. Provide the control-plane workflow and a concrete example migrating a hot users table."
+  },
+  {
+    "id": "complex-06",
+    "category": "complex",
+    "expected_tier": "complex",
+    "prompt": "Architect a confidential-computing key management service that uses HSMs and trusted execution environments. Include quorum approvals, key rotation, envelope encryption, attestation of enclaves, break-glass procedures, multi-region replication of wrapped keys, and threat modeling against insider access and side-channel leakage. Describe APIs, audit logging, and a rotation runbook."
+  },
+  {
+    "id": "complex-07",
+    "category": "complex",
+    "expected_tier": "complex",
+    "prompt": "Design a peer-to-peer live video mesh for a 10,000-participant webinar using a hybrid SFU/MCU topology. Cover NAT traversal, congestion control under asymmetric bandwidth, simulcast or SVC layer selection, packet-loss concealment, speaker-of-interest routing, and fairness so late joiners do not collapse the mesh. Outline the signaling plane, media plane, and a chaos-testing plan."
+  },
+  {
+    "id": "complex-08",
+    "category": "complex",
+    "expected_tier": "complex",
+    "prompt": "Write a detailed design for a lock-free concurrent priority queue that will sit at the core of a million-QPS in-process scheduler. Discuss the chosen algorithm, memory reclamation (EBR or hazard pointers), ABA hazards, fairness and starvation, linearizability arguments, and how you would test it with stress, model checking, and production telemetry. Include pseudocode for the critical push and pop paths."
+  },
+  {
+    "id": "complex-09",
+    "category": "complex",
+    "expected_tier": "complex",
+    "prompt": "Design a compiler pipeline and incremental build system for a monorepo of 50,000 packages. Address remote caching, content-addressed artifacts, hermetic toolchains, scheduling across a build farm, change-affected target selection, and reproducibility. Describe the graph model, cache key inputs, and how a flaky compiler or non-hermetic action is detected and quarantined."
+  },
+  {
+    "id": "complex-10",
+    "category": "complex",
+    "expected_tier": "complex",
+    "prompt": "Architect a multi-cloud disaster-recovery control plane that can fail over a stateful Kubernetes platform running Postgres, Kafka, and object storage. Cover consistent snapshot coordination, replication lag budgets, DNS and traffic cutover, identity and secret failover, split-brain prevention, and a sequenced runbook with go/no-go checks. Discuss how you would regularly game-day the plan without harming production data."
+  }
+]
