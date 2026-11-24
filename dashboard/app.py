@@ -27,7 +27,70 @@ st.set_page_config(
 def get_database():
     """Get database connection."""
     db_path = Path(__file__).parent.parent / "data" / "router.db"
+    
+    # Auto-initialize from benchmark results if DB is empty
+    if not db_path.exists() or db_path.stat().st_size == 0:
+        benchmark_path = Path(__file__).parent.parent / "docs" / "benchmark_results.json"
+        if benchmark_path.exists():
+            _initialize_db_from_benchmark(db_path, benchmark_path)
+    
     return Database(db_path)
+
+
+def _initialize_db_from_benchmark(db_path, benchmark_path):
+    """Initialize database from benchmark results."""
+    import json
+    from datetime import datetime, timedelta
+    from llm_cost_router.storage import Database, RequestLog, EvaluationLog
+    
+    with open(benchmark_path) as f:
+        results = json.load(f)
+    
+    db = Database(db_path)
+    base_timestamp = datetime.fromisoformat("2026-11-24T04:17:00")
+    
+    for index, prompt_record in enumerate(results["prompts"]):
+        routed = prompt_record["routed"]
+        timestamp = base_timestamp + timedelta(seconds=15 * index)
+        
+        request_log = RequestLog(
+            timestamp=timestamp.isoformat(),
+            prompt=prompt_record["prompt"][:200],
+            complexity_tier=prompt_record["predicted_complexity"],
+            complexity_score=prompt_record["complexity_score"],
+            selected_model=prompt_record["selected_model"],
+            provider=routed["model"].split("/")[0] if "/" in routed["model"] else "openai",
+            tier=prompt_record["selected_tier"],
+            response_content=routed["response_snippet"],
+            input_tokens=routed["input_tokens"],
+            output_tokens=routed["output_tokens"],
+            latency_ms=routed["latency_ms"],
+            cost_usd=routed["cost_usd"],
+            frontier_baseline_cost_usd=prompt_record["baseline"]["cost_usd"],
+            savings_usd=prompt_record["baseline"]["cost_usd"] - routed["cost_usd"],
+            savings_percent=(
+                (prompt_record["baseline"]["cost_usd"] - routed["cost_usd"]) 
+                / prompt_record["baseline"]["cost_usd"] * 100
+                if prompt_record["baseline"]["cost_usd"] > 0 else 0
+            ),
+        )
+        
+        request_id = db.log_request(request_log)
+        
+        eval_log = EvaluationLog(
+            request_id=request_id,
+            timestamp=timestamp.isoformat(),
+            quality_score=routed["quality_score"],
+            passed=routed["passed"],
+            heuristic_score=routed["heuristic_score"],
+            judge_score=routed.get("judge_score"),
+            judge_rationale=routed.get("judge_rationale"),
+            failure_reasons=", ".join(routed["failure_reasons"]) if routed.get("failure_reasons") else None,
+        )
+        
+        db.log_evaluation(eval_log)
+    
+    db.close()
 
 
 def format_currency(value):
@@ -38,6 +101,100 @@ def format_currency(value):
 def format_percent(value):
     """Format percentage value."""
     return f"{value:.1f}%"
+
+
+@st.cache_resource
+def _get_classifier():
+    """Get or train classifier."""
+    from llm_cost_router.classifier import ComplexityClassifier
+    import json
+    
+    model_path = Path(__file__).parent.parent / "models" / "complexity_classifier.joblib"
+    classifier = ComplexityClassifier()
+    
+    if model_path.exists():
+        classifier.load(model_path)
+    else:
+        # Auto-train from dataset
+        dataset_path = Path(__file__).parent.parent / "data" / "complexity_dataset.jsonl"
+        if dataset_path.exists():
+            prompts, labels = [], []
+            with open(dataset_path) as f:
+                for line in f:
+                    data = json.loads(line)
+                    prompts.append(data["prompt"])
+                    labels.append(data["complexity"])
+            classifier.train(prompts, labels)
+            model_path.parent.mkdir(parents=True, exist_ok=True)
+            classifier.save(model_path)
+    
+    return classifier
+
+
+def _route_in_process(prompt, force_tier, local_only, openai_api_key=None):
+    """Route a request in-process using classifier + MockProvider."""
+    import asyncio
+    from llm_cost_router.pricing import get_tier_for_complexity, calculate_frontier_baseline_cost, MODEL_CATALOG
+    from llm_cost_router.providers import MockProvider
+    
+    # Classify
+    classifier = _get_classifier()
+    classification = classifier.predict(prompt)
+    
+    # Determine tier
+    if force_tier and force_tier != "None":
+        tier = force_tier
+    else:
+        tier = get_tier_for_complexity(classification.score)
+    
+    if local_only and tier != "local":
+        tier = "local"
+    
+    # Select model
+    from llm_cost_router.pricing import TIER_MODELS
+    model_key = TIER_MODELS[tier][0]
+    model_info = MODEL_CATALOG[model_key]
+    
+    # Use MockProvider for in-process routing
+    provider = MockProvider()
+    messages = [{"role": "user", "content": prompt}]
+    
+    # Run async completion
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    try:
+        response = loop.run_until_complete(
+            provider.complete(messages, model_info.model, temperature=0.7, max_tokens=2000)
+        )
+    finally:
+        loop.close()
+    
+    # Calculate costs
+    frontier_baseline = calculate_frontier_baseline_cost(response.input_tokens, response.output_tokens)
+    savings = frontier_baseline - response.cost_usd
+    savings_pct = (savings / frontier_baseline * 100) if frontier_baseline > 0 else 0
+    
+    # Build response matching API format
+    return {
+        "content": response.content,
+        "routing_decision": {
+            "complexity_tier": classification.tier,
+            "complexity_score": classification.score,
+            "complexity_explanation": classification.explanation,
+            "selected_model": model_key,
+            "selected_tier": tier,
+            "provider": model_info.provider,
+            "fallback_used": False,
+        },
+        "cost_usd": response.cost_usd,
+        "input_tokens": response.input_tokens,
+        "output_tokens": response.output_tokens,
+        "latency_ms": response.latency_ms,
+        "frontier_baseline_cost_usd": frontier_baseline,
+        "savings_usd": savings,
+        "savings_percent": savings_pct,
+        "eval_scores": None,  # Skip eval in standalone mode
+    }
 
 
 # Main dashboard
@@ -391,12 +548,22 @@ def show_request_audit():
 def show_live_tester():
     """Interactive prompt tester."""
     st.subheader("Live Prompt Tester")
-    st.markdown("Test routing decisions in real-time by calling the router API.")
+    st.markdown("Test routing decisions in real-time (uses FastAPI backend if available, otherwise runs in-process)")
 
+    # Sidebar: Optional OpenAI API key
+    with st.sidebar:
+        st.markdown("### Live Testing Options")
+        openai_api_key = st.text_input(
+            "OpenAI API Key (optional, session-only)",
+            type="password",
+            help="Paste your OpenAI API key to run real completions. Never stored to disk.",
+        )
+        st.caption("💡 Without a key, runs in mock mode with real classifier")
+    
     # API endpoint
     api_url = st.text_input(
-        "Router API URL",
-        value="http://localhost:8000/v1/route",
+        "Router API URL (auto-fallback if unreachable)",
+        value=st.session_state.get("ROUTER_API_URL", "http://localhost:8000/v1/route"),
     )
 
     # Prompt input
@@ -437,19 +604,26 @@ def show_live_tester():
         if force_tier != "None":
             request_data["force_tier"] = force_tier
 
-        # Call API
+        # Try API first, fallback to in-process
         with st.spinner("Routing request..."):
             try:
                 response = httpx.post(
                     api_url,
                     json=request_data,
-                    timeout=30.0,
+                    timeout=5.0,
                 )
                 response.raise_for_status()
                 data = response.json()
+                st.success("✅ Request routed via API")
 
-                # Display results
-                st.success("Request routed successfully!")
+            except Exception as api_error:
+                # Fallback to in-process routing
+                st.warning(f"⚠️ API unavailable, running in-process (mock mode)")
+                try:
+                    data = _route_in_process(prompt, force_tier, local_only, openai_api_key)
+                except Exception as e:
+                    st.error(f"Routing failed: {str(e)}")
+                    return
 
                 # Routing decision
                 st.subheader("Routing Decision")

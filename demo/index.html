@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLM Cost Router - Live Demo</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>LLM Cost Router</h1>
+      <p class="subtitle">ML-driven complexity routing across OpenAI, Anthropic & Ollama</p>
+      <div class="header-meta">
+        <span class="badge">Live OpenAI Benchmark · 30 held-out prompts</span>
+        <a href="https://github.com/FAZIO11/llm-cost-router" class="btn-github" target="_blank">
+          GitHub ↗
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="kpi-strip">
+    <div class="container">
+      <div class="kpi-grid" id="kpi-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="tabs">
+      <button class="tab active" data-tab="tester">Live Prompt Tester</button>
+      <button class="tab" data-tab="analytics">Benchmark Analytics</button>
+      <button class="tab" data-tab="audit">Request Audit (30)</button>
+    </div>
+
+    <div class="tab-content active" id="tab-tester">
+      <div class="card">
+        <h2>Live Prompt Tester</h2>
+        <p class="help-text">Test routing with the exact trained classifier (runs 100% in-browser, 0ms cold start)</p>
+
+        <div class="prompt-examples">
+          <button class="example-btn" data-example="simple">Simple factual</button>
+          <button class="example-btn" data-example="moderate">Moderate Python</button>
+          <button class="example-btn" data-example="sql">SQL query</button>
+          <button class="example-btn" data-example="system">System design</button>
+        </div>
+
+        <textarea id="prompt-input" placeholder="Enter your prompt here..." rows="4"></textarea>
+
+        <details class="api-key-section">
+          <summary>Bring your own OpenAI key (browser-only, never stored)</summary>
+          <input type="password" id="openai-key" placeholder="sk-...">
+          <p class="help-text">Optional: Paste your key to run real OpenAI completions. Otherwise shows mock mode preview.</p>
+        </details>
+
+        <div class="provider-toggles">
+          <label><input type="checkbox" id="provider-openai" checked> OpenAI</label>
+          <label><input type="checkbox" id="provider-anthropic" checked> Anthropic</label>
+          <label><input type="checkbox" id="provider-ollama" checked> Ollama (local)</label>
+        </div>
+
+        <button id="route-btn" class="btn-primary">Route Prompt</button>
+
+        <div id="result" class="result hidden"></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-analytics">
+      <div class="card">
+        <h2>Benchmark Analytics</h2>
+        <div id="chart-cumulative" style="height: 400px;"></div>
+        <div class="chart-row">
+          <div id="chart-tier-dist" style="height: 350px; flex: 1;"></div>
+          <div id="chart-scatter" style="height: 350px; flex: 1;"></div>
+        </div>
+        <div id="tier-breakdown"></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-audit">
+      <div class="card">
+        <h2>Request Audit</h2>
+        <div class="audit-controls">
+          <input type="search" id="audit-search" placeholder="Search prompts...">
+          <div class="filter-pills">
+            <button class="pill active" data-filter="all">All</button>
+            <button class="pill" data-filter="simple">Simple</button>
+            <button class="pill" data-filter="moderate">Moderate</button>
+            <button class="pill" data-filter="complex">Complex</button>
+          </div>
+        </div>
+        <div id="audit-table"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Built by <a href="https://github.com/FAZIO11" target="_blank">Fazil Sathar</a> · MIT License</p>
+    </div>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

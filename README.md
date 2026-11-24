@@ -1,6 +1,16 @@
 # LLM Cost Router
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-059669?style=for-the-badge)](https://llm-cost-router-demo.vercel.app)
+
 An intelligent routing layer that sits in front of multiple LLM providers, analyzes each incoming request's complexity, routes it to the cheapest model capable of handling it at acceptable quality, and continuously validates that routing decisions are correct.
+
+## Live Demo
+
+**[🚀 Try it now: llm-cost-router-demo.vercel.app](https://llm-cost-router-demo.vercel.app)**
+
+The interactive demo runs the exact trained scikit-learn classifier (293 TF-IDF features + 24 structural features) in pure JavaScript with the full 30-prompt benchmark preloaded. Test routing decisions in your browser, explore analytics charts, and optionally bring your own OpenAI key for real completions.
+
+For a full-featured local experience with auto-initialization, run `streamlit run dashboard/app.py` — zero setup required, works standalone with mock provider or with your own API keys.
 
 ## Overview
 

@@ -45,12 +45,21 @@ class MockProvider(BaseProvider):
         """Generate mock completion with realistic characteristics."""
         # Extract full model key
         if "/" not in model:
-            # Find full model key
+            # Find full model key - prefer exact matches first
+            model_key = None
+            # First try exact model name match
             for key in MODEL_CATALOG:
-                if model in key:
+                if key.endswith(f"/{model}"):
                     model_key = key
                     break
-            else:
+            # If no exact match, try partial match
+            if not model_key:
+                for key in MODEL_CATALOG:
+                    if model in key:
+                        model_key = key
+                        break
+            # Fallback to first model
+            if not model_key:
                 model_key = list(MODEL_CATALOG.keys())[0]
         else:
             model_key = model
