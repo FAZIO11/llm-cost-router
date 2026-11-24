@@ -1,0 +1,150 @@
+{"prompt": "What is 2+2?", "complexity": "simple"}
+{"prompt": "Tell me a joke", "complexity": "simple"}
+{"prompt": "What's the capital of France?", "complexity": "simple"}
+{"prompt": "How do I boil water?", "complexity": "simple"}
+{"prompt": "What color is the sky?", "complexity": "simple"}
+{"prompt": "Define 'happiness'", "complexity": "simple"}
+{"prompt": "What day is it?", "complexity": "simple"}
+{"prompt": "Translate 'hello' to Spanish", "complexity": "simple"}
+{"prompt": "What is an apple?", "complexity": "simple"}
+{"prompt": "Name three colors", "complexity": "simple"}
+{"prompt": "Who wrote Romeo and Juliet?", "complexity": "simple"}
+{"prompt": "What is the speed of light?", "complexity": "simple"}
+{"prompt": "How many continents are there?", "complexity": "simple"}
+{"prompt": "What is water made of?", "complexity": "simple"}
+{"prompt": "Define 'democracy'", "complexity": "simple"}
+{"prompt": "What is the largest ocean?", "complexity": "simple"}
+{"prompt": "How many days in a year?", "complexity": "simple"}
+{"prompt": "What is a CPU?", "complexity": "simple"}
+{"prompt": "Name a programming language", "complexity": "simple"}
+{"prompt": "What does HTTP stand for?", "complexity": "simple"}
+{"prompt": "What is gravity?", "complexity": "simple"}
+{"prompt": "Who painted the Mona Lisa?", "complexity": "simple"}
+{"prompt": "What is the sun?", "complexity": "simple"}
+{"prompt": "Define 'algorithm'", "complexity": "simple"}
+{"prompt": "What is JSON?", "complexity": "simple"}
+{"prompt": "How do plants grow?", "complexity": "simple"}
+{"prompt": "What is a verb?", "complexity": "simple"}
+{"prompt": "Name a fruit", "complexity": "simple"}
+{"prompt": "What is the weather today?", "complexity": "simple"}
+{"prompt": "Define 'variable'", "complexity": "simple"}
+{"prompt": "What is an API?", "complexity": "simple"}
+{"prompt": "How many wheels on a bicycle?", "complexity": "simple"}
+{"prompt": "What is the moon?", "complexity": "simple"}
+{"prompt": "Name a country in Europe", "complexity": "simple"}
+{"prompt": "What is addition?", "complexity": "simple"}
+{"prompt": "Define 'function'", "complexity": "simple"}
+{"prompt": "What is HTML?", "complexity": "simple"}
+{"prompt": "How many letters in the alphabet?", "complexity": "simple"}
+{"prompt": "What is a database?", "complexity": "simple"}
+{"prompt": "Name a web browser", "complexity": "simple"}
+{"prompt": "What is CSS?", "complexity": "simple"}
+{"prompt": "Who is Albert Einstein?", "complexity": "simple"}
+{"prompt": "What is Linux?", "complexity": "simple"}
+{"prompt": "Define 'integer'", "complexity": "simple"}
+{"prompt": "What is a file?", "complexity": "simple"}
+{"prompt": "Name a search engine", "complexity": "simple"}
+{"prompt": "What is Git?", "complexity": "simple"}
+{"prompt": "How many seconds in a minute?", "complexity": "simple"}
+{"prompt": "What is a URL?", "complexity": "simple"}
+{"prompt": "Define 'loop'", "complexity": "simple"}
+{"prompt": "What is Python?", "complexity": "simple"}
+{"prompt": "Name an operating system", "complexity": "simple"}
+{"prompt": "What is a byte?", "complexity": "simple"}
+{"prompt": "Who invented the telephone?", "complexity": "simple"}
+{"prompt": "What is RAM?", "complexity": "simple"}
+{"prompt": "Define 'string'", "complexity": "simple"}
+{"prompt": "What is Docker?", "complexity": "simple"}
+{"prompt": "How many hours in a day?", "complexity": "simple"}
+{"prompt": "What is a server?", "complexity": "simple"}
+{"prompt": "Name a cloud provider", "complexity": "simple"}
+{"prompt": "What is REST?", "complexity": "simple"}
+{"prompt": "Explain how photosynthesis works", "complexity": "moderate"}
+{"prompt": "Write a short poem about nature", "complexity": "moderate"}
+{"prompt": "Compare Python and JavaScript for web development", "complexity": "moderate"}
+{"prompt": "How do I create a simple todo app?", "complexity": "moderate"}
+{"prompt": "Explain the difference between HTTP and HTTPS", "complexity": "moderate"}
+{"prompt": "What are the benefits of using TypeScript?", "complexity": "moderate"}
+{"prompt": "How does a neural network work?", "complexity": "moderate"}
+{"prompt": "Write a function to reverse a string", "complexity": "moderate"}
+{"prompt": "Explain the concept of recursion with an example", "complexity": "moderate"}
+{"prompt": "How do I set up a React project?", "complexity": "moderate"}
+{"prompt": "What is the difference between SQL and NoSQL?", "complexity": "moderate"}
+{"prompt": "Explain how caching improves performance", "complexity": "moderate"}
+{"prompt": "Write a regex to validate email addresses", "complexity": "moderate"}
+{"prompt": "How does OAuth 2.0 work?", "complexity": "moderate"}
+{"prompt": "What are the SOLID principles?", "complexity": "moderate"}
+{"prompt": "Explain the difference between REST and GraphQL", "complexity": "moderate"}
+{"prompt": "How do I implement pagination in an API?", "complexity": "moderate"}
+{"prompt": "What is the CAP theorem?", "complexity": "moderate"}
+{"prompt": "Write a script to fetch data from an API", "complexity": "moderate"}
+{"prompt": "Explain how DNS resolution works", "complexity": "moderate"}
+{"prompt": "What are the differences between TCP and UDP?", "complexity": "moderate"}
+{"prompt": "How do I deploy a web app to AWS?", "complexity": "moderate"}
+{"prompt": "Explain the concept of microservices", "complexity": "moderate"}
+{"prompt": "Write a function to find duplicates in an array", "complexity": "moderate"}
+{"prompt": "How does JWT authentication work?", "complexity": "moderate"}
+{"prompt": "What is the difference between sync and async?", "complexity": "moderate"}
+{"prompt": "Explain how load balancing works", "complexity": "moderate"}
+{"prompt": "Write a SQL query to join three tables", "complexity": "moderate"}
+{"prompt": "How do I optimize database queries?", "complexity": "moderate"}
+{"prompt": "What are design patterns in software engineering?", "complexity": "moderate"}
+{"prompt": "Explain the event loop in JavaScript", "complexity": "moderate"}
+{"prompt": "How do I implement rate limiting?", "complexity": "moderate"}
+{"prompt": "What is containerization?", "complexity": "moderate"}
+{"prompt": "Write a function to implement binary search", "complexity": "moderate"}
+{"prompt": "Explain how CDNs improve website performance", "complexity": "moderate"}
+{"prompt": "What is the difference between cookies and sessions?", "complexity": "moderate"}
+{"prompt": "How do I set up CI/CD pipeline?", "complexity": "moderate"}
+{"prompt": "Explain the MVC architecture pattern", "complexity": "moderate"}
+{"prompt": "Write a function to validate a JSON schema", "complexity": "moderate"}
+{"prompt": "How does HTTPS encryption work?", "complexity": "moderate"}
+{"prompt": "What are the benefits of using Redis?", "complexity": "moderate"}
+{"prompt": "Explain how message queues work", "complexity": "moderate"}
+{"prompt": "Write a function to implement a LRU cache", "complexity": "moderate"}
+{"prompt": "How do I handle errors in async code?", "complexity": "moderate"}
+{"prompt": "What is the difference between PUT and PATCH?", "complexity": "moderate"}
+{"prompt": "Explain how database indexing works", "complexity": "moderate"}
+{"prompt": "Write a function to flatten a nested array", "complexity": "moderate"}
+{"prompt": "How do I implement search functionality?", "complexity": "moderate"}
+{"prompt": "What are the principles of REST API design?", "complexity": "moderate"}
+{"prompt": "Explain how websockets work", "complexity": "moderate"}
+{"prompt": "Write a function to implement debounce", "complexity": "moderate"}
+{"prompt": "How do I secure an API?", "complexity": "moderate"}
+{"prompt": "What is the difference between horizontal and vertical scaling?", "complexity": "moderate"}
+{"prompt": "Explain how database transactions work", "complexity": "moderate"}
+{"prompt": "Write a function to implement throttling", "complexity": "moderate"}
+{"prompt": "How do I implement file uploads?", "complexity": "moderate"}
+{"prompt": "What are the best practices for API versioning?", "complexity": "moderate"}
+{"prompt": "Explain how service workers work", "complexity": "moderate"}
+{"prompt": "Write a function to deep clone an object", "complexity": "moderate"}
+{"prompt": "Design and implement a distributed rate limiting system that works across multiple servers, handles millions of requests per second, provides accurate enforcement with minimal latency, supports dynamic rate limit adjustments, includes detailed analytics, and gracefully handles clock skew and network partitions. Include production-ready code with comprehensive error handling, monitoring, and documentation.", "complexity": "complex"}
+{"prompt": "Build a complete real-time collaborative editing system similar to Google Docs that supports operational transformation, conflict resolution, offline mode with sync, presence indicators, comments, version history, and undo/redo across multiple users. Provide full implementation with WebSocket handling, CRDT algorithms, database schema, and client-side state management.", "complexity": "complex"}
+{"prompt": "Create a production-grade recommendation engine using collaborative filtering, content-based filtering, and hybrid approaches. Include cold-start problem handling, A/B testing framework, real-time personalization, scalable batch processing pipeline, model versioning, and comprehensive evaluation metrics. Provide complete implementation with data pipelines and ML serving infrastructure.", "complexity": "complex"}
+{"prompt": "Design and implement a fault-tolerant distributed task queue system with priorities, delayed execution, retries with exponential backoff, dead letter queues, rate limiting per worker, horizontal scaling, monitoring dashboards, and guaranteed at-least-once delivery semantics. Include production deployment configuration and disaster recovery procedures.", "complexity": "complex"}
+{"prompt": "Build a secure multi-tenant SaaS platform with row-level security, tenant isolation, usage-based billing, API rate limiting per tenant, audit logging, GDPR compliance features, SSO integration, role-based access control, and automated backup/restore. Provide complete database schema, API implementation, and infrastructure as code.", "complexity": "complex"}
+{"prompt": "Implement a high-performance real-time analytics pipeline that ingests millions of events per second, performs complex aggregations with sub-second latency, supports ad-hoc queries, provides interactive dashboards, handles late-arriving data, ensures exactly-once processing, and scales horizontally. Include stream processing code, storage architecture, and query optimization strategies.", "complexity": "complex"}
+{"prompt": "Design a sophisticated fraud detection system using machine learning that analyzes transactions in real-time, adapts to new fraud patterns, minimizes false positives, provides explainable predictions, handles concept drift, integrates with multiple data sources, and includes a feedback loop for continuous learning. Provide model training pipeline, feature engineering, and production serving infrastructure.", "complexity": "complex"}
+{"prompt": "Create a production-ready search engine with full-text search, faceted navigation, autocomplete, typo tolerance, relevance tuning, personalized results, real-time indexing, distributed architecture, and sub-100ms query latency at scale. Include indexing pipeline, query processing optimization, and relevance evaluation framework.", "complexity": "complex"}
+{"prompt": "Build a comprehensive observability platform that collects metrics, logs, and traces from distributed systems, provides intelligent alerting with anomaly detection, offers customizable dashboards, supports complex queries across data types, handles high cardinality data efficiently, and includes cost optimization features. Provide complete data ingestion pipeline and storage architecture.", "complexity": "complex"}
+{"prompt": "Implement a sophisticated inventory management system for e-commerce with real-time stock tracking across multiple warehouses, predictive restocking algorithms, supplier integration, order fulfillment optimization, handling of backorders and reservations, support for bundles and variants, and comprehensive reporting. Include database design, business logic, and integration patterns.", "complexity": "complex"}
+{"prompt": "Design and build a scalable video processing pipeline that handles uploads, transcoding to multiple formats and resolutions, thumbnail generation, content moderation using ML, CDN distribution, adaptive bitrate streaming, DRM integration, analytics collection, and cost optimization. Provide complete architecture with infrastructure code and processing workflows.", "complexity": "complex"}
+{"prompt": "Create a production-grade feature flag system supporting percentage rollouts, user targeting, A/B tests with statistical analysis, gradual rollouts with automatic rollback on errors, audit logging, real-time flag updates without deployment, and minimal performance overhead. Include SDKs for multiple languages and admin dashboard implementation.", "complexity": "complex"}
+{"prompt": "Build a sophisticated email marketing platform with template builder, personalization engine, delivery optimization, bounce handling, unsubscribe management, campaign analytics, A/B testing, segmentation, automation workflows, and compliance with anti-spam regulations. Provide complete backend implementation and email infrastructure setup.", "complexity": "complex"}
+{"prompt": "Implement a high-performance order matching engine for a trading platform with microsecond latency, FIFO order matching, support for multiple order types, partial fills, order cancellation, real-time market data distribution, audit trail, and fault tolerance. Include lock-free data structures and low-latency networking code.", "complexity": "complex"}
+{"prompt": "Design a comprehensive data governance platform that catalogs data assets, tracks lineage, enforces access policies, manages data quality rules, provides impact analysis, supports compliance reporting, integrates with multiple data sources, and offers self-service data discovery. Include metadata management system and policy engine implementation.", "complexity": "complex"}
+{"prompt": "Create a production-ready distributed caching system with consistent hashing, automatic sharding, replication, failover, cache warming, eviction policies, monitoring, and support for complex data types. Include protocol implementation, cluster management, and performance optimization techniques.", "complexity": "complex"}
+{"prompt": "Build a sophisticated chatbot platform with natural language understanding, intent classification, entity extraction, context management, multi-turn conversations, integration with knowledge bases, analytics, A/B testing of responses, and support for multiple channels. Provide NLU pipeline, conversation engine, and integration framework.", "complexity": "complex"}
+{"prompt": "Implement a comprehensive CI/CD platform that supports multiple languages, parallel builds, complex workflows, artifact management, deployment strategies (blue-green, canary), environment management, secrets handling, approval gates, and detailed pipeline analytics. Include runner implementation and orchestration system.", "complexity": "complex"}
+{"prompt": "Design and build a scalable time-series database optimized for metrics storage with high ingestion rate, efficient compression, downsampling, retention policies, complex aggregations, support for high-cardinality tags, and fast range queries. Provide storage engine implementation and query processing optimization.", "complexity": "complex"}
+{"prompt": "Create a production-grade workflow orchestration system supporting DAG-based workflows, dynamic task generation, conditional execution, retries, timeouts, parallel execution, resource management, monitoring, and scheduling. Include execution engine, state management, and scheduling algorithms.", "complexity": "complex"}
+{"prompt": "Build a sophisticated pricing optimization system using ML that considers demand elasticity, competitor pricing, inventory levels, seasonality, customer segments, and business constraints. Include price testing framework, model training pipeline, and real-time pricing API with explanation capabilities.", "complexity": "complex"}
+{"prompt": "Implement a high-performance distributed file storage system with chunking, deduplication, encryption at rest, versioning, access control, quota management, search capabilities, and efficient synchronization. Provide storage backend, metadata service, and client implementation.", "complexity": "complex"}
+{"prompt": "Design a comprehensive customer data platform that unifies data from multiple sources, creates unified customer profiles, segments audiences, tracks customer journeys, provides predictive analytics, ensures privacy compliance, and offers real-time activation. Include data integration pipeline and identity resolution algorithms.", "complexity": "complex"}
+{"prompt": "Create a production-ready distributed tracing system that captures traces across microservices, samples intelligently, stores efficiently, provides latency analysis, dependency mapping, anomaly detection, and integrates with existing observability tools. Include tracing instrumentation, storage backend, and analysis engine.", "complexity": "complex"}
+{"prompt": "Build a sophisticated content delivery network with edge caching, origin shielding, smart routing, DDoS protection, real-time purging, analytics, SSL/TLS termination, and geographic optimization. Provide edge server implementation and control plane architecture.", "complexity": "complex"}
+{"prompt": "Implement a comprehensive test automation framework supporting unit, integration, and end-to-end tests, parallel execution, smart test selection, flaky test detection, visual regression testing, performance testing, and detailed reporting. Include test runner implementation and reporting dashboard.", "complexity": "complex"}
+{"prompt": "Design and build a scalable notification system supporting multiple channels (email, SMS, push, in-app), delivery preferences, batching, rate limiting, retry logic, delivery tracking, analytics, and template management. Provide message routing engine and delivery infrastructure.", "complexity": "complex"}
+{"prompt": "Create a production-grade API gateway with request routing, authentication, rate limiting, request/response transformation, circuit breaking, caching, monitoring, and analytics. Include plugin system for extensibility and control plane for configuration management.", "complexity": "complex"}
+{"prompt": "Build a sophisticated demand forecasting system using time series analysis and ML that handles multiple products, considers external factors, provides confidence intervals, supports what-if scenarios, adapts to changing patterns, and includes model performance monitoring. Provide complete forecasting pipeline and serving infrastructure.", "complexity": "complex"}
+{"prompt": "Implement a high-performance event sourcing framework with event store, snapshot management, projections, subscriptions, guaranteed ordering, idempotency handling, and saga support. Include event store implementation and projection engine with CQRS patterns.", "complexity": "complex"}
